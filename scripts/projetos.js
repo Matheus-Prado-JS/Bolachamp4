@@ -13,6 +13,8 @@ carousels.forEach(carousel => {
   let pauseTime = 0;
   let isPaused = false; // 🔥 CONTROLE REAL
 
+  let isHovering = false;
+
 const images = track.querySelectorAll("img");
 
 let loaded = 0;
@@ -60,7 +62,9 @@ function start() {
       isPaused = false;
     }
 
-    if (pauseTime > 0) {
+    if (isHovering) {
+      speed = 0;
+    } else if (pauseTime > 0) {
       speed = 0;
       pauseTime--;
     } else {
@@ -83,7 +87,12 @@ function start() {
   animate();
 
   
-  carousel.addEventListener("mouseenter", () => speed = 0);
-  carousel.addEventListener("mouseleave", () => speed = baseSpeed);
+  carousel.addEventListener("mouseenter", () => {
+    isHovering = true;
+  });
+
+  carousel.addEventListener("mouseleave", () => {
+    isHovering = false;
+  });
 }
 });
