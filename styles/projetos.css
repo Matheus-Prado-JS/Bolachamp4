@@ -4,7 +4,7 @@
   padding: 100px 0;
   text-align: center;
 
-  background: url("/assets/background-2.jpg") center/cover no-repeat;
+  background: url("assets/background-2.jpg") center/cover no-repeat;
 }
 
 /* overlay borrado */
