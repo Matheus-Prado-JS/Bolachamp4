@@ -1,0 +1,151 @@
+/* SEÇÃO PROJETOS */
+.projetos {
+  position: relative;
+  padding: 100px 0;
+  text-align: center;
+
+  background: url("/assets/background-2.jpg") center/cover no-repeat;
+}
+
+/* overlay borrado */
+.projetos::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.8);
+
+  z-index: 1;
+}
+
+.projetos h2 {
+  position: relative;
+  z-index: 2;
+
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+/* CAROUSEL */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 40px;
+  z-index: 2;
+
+  cursor: grab;
+}
+
+.carousel:active {
+  cursor: grabbing;
+}
+
+.track {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+
+  will-change: transform;
+}
+
+/* VIDEOS */
+.carousel iframe {
+  border-radius: 15px;
+  border: none;
+}
+
+/* HORIZONTAL */
+.carousel.horizontal iframe {
+  width: 400px;
+  height: 225px;
+}
+
+/* VERTICAL */
+.carousel.vertical iframe {
+  width: 520px;
+  height: 720px;
+}
+
+/* BOTÃO */
+.btn-projetos {
+  position: relative;
+  z-index: 2;
+
+  display: inline-block;
+  padding: 12px 30px;
+
+  border: 2px solid var(--laranja);
+  color: var(--laranja);
+
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+
+  transition: 0.3s;
+}
+
+.btn-projetos:hover {
+  background: var(--laranja);
+  color: #000;
+}
+
+/* CARD DE VÍDEO */
+.video-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+/* IMAGEM */
+.video-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  transition: transform 0.4s ease;
+}
+
+/* TAMANHOS */
+.carousel.horizontal .video-card {
+  width: 500px;
+  height: 325px;
+}
+
+.carousel.vertical .video-card {
+  width: 360px;
+  height: 560px;
+}
+
+/* HOVER ZOOM */
+.video-card:hover img {
+  transform: scale(1.1);
+}
+
+/* OVERLAY ESCURO */
+.video-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+}
+
+/* TEXTO */
+.video-card span {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+
+  z-index: 2;
+}
+
+/* HOVER TEXTO */
+.video-card:hover span {
+  color: var(--laranja);
+}
