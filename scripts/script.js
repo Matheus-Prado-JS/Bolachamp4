@@ -2,6 +2,19 @@ const header = document.querySelector(".header");
 const sections = document.querySelectorAll("section, footer");
 const navLinks = document.querySelectorAll("nav a");
 
+const menuToggle = document.querySelector(".menu-toggle");
+const headerEl = document.querySelector(".header");
+
+// toggle menu
+menuToggle.addEventListener("click", () => {
+  headerEl.classList.toggle("open");
+});
+navLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    headerEl.classList.remove("open");
+  });
+});
+
 window.addEventListener("scroll", () => {
   // header efeito
   if (window.scrollY > 50) {
@@ -29,6 +42,17 @@ window.addEventListener("scroll", () => {
       link.classList.add("active");
     }
   });
+
+  // 🔥 comportamento inteligente do menu
+if (current === "home") {
+  header.classList.remove("compact");
+  header.classList.remove("open");
+} else {
+  // 🔥 só aplica compact se NÃO estiver aberto
+  if (!header.classList.contains("open")) {
+    header.classList.add("compact");
+  }
+}
 });
 
 const texts = document.querySelectorAll(".hero-content h1, .hero-content p");

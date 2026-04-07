@@ -4,9 +4,10 @@ carousels.forEach(carousel => {
   const track = carousel.querySelector(".track");
 
   // duplica uma vez
-  track.innerHTML += track.innerHTML;
+ track.innerHTML += track.innerHTML;
+track.innerHTML += track.innerHTML;
 
-  let baseSpeed = 0.5;
+  let baseSpeed = 0.25;
   let speed = baseSpeed;
   let position = 0;
 
@@ -34,6 +35,7 @@ images.forEach(img => {
 if (loaded === images.length) start();
 
 function start() {
+  
   function animate() {
     const items = track.children;
 
@@ -53,30 +55,32 @@ function start() {
       }
     });
 
-    if (closestDistance < 10 && !isPaused) {
+    if (closestDistance < 20 && !isPaused) {
       pauseTime = 35;
       isPaused = true;
     }
 
-    if (closestDistance > 30) {
+    if (closestDistance > 40) {
       isPaused = false;
     }
+    let targetSpeed = baseSpeed;
 
     if (isHovering) {
-      speed = 0;
+      targetSpeed = 0;
     } else if (pauseTime > 0) {
-      speed = 0;
+      targetSpeed = 0;
       pauseTime--;
-    } else {
-      speed = baseSpeed;
     }
+
+    // 🔥 easing suave (quanto menor, mais suave)
+    speed += (targetSpeed - speed) * 0.08;
 
     position -= speed;
 
     const halfWidth = track.scrollWidth / 2;
 
     if (Math.abs(position) >= halfWidth) {
-      position = 0;
+      position += halfWidth;
     }
 
     track.style.transform = `translateX(${position}px)`;

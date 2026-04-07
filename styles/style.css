@@ -32,11 +32,11 @@ body {
 
   padding: 10px 20px;
 
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.034);
   backdrop-filter: blur(10px);
 
   border-radius: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.034);
 
   transition: all 0.3s ease;
   z-index: 1000;
@@ -44,7 +44,7 @@ body {
 
 .header.scrolled {
   top: 10px;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(46, 21, 0, 0.288);
 }
 
 /* LOGO IMG */
@@ -52,8 +52,96 @@ body {
   height: 40px;
 }
 
+nav {
+  display: flex;
+  align-items: center;
+}
+
+/* container dos links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+  gap: 28px;
+}
+
+/* botão menu */
+.menu-toggle {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+/* mostra botão */
+.header.compact .menu-toggle {
+  display: block;
+}
+/* links base */
+.nav-links a {
+  gap: 1px;
+  transition: all 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 🔥 estado compacto */
+.header.compact .nav-links {
+  justify-content: flex-end;
+  gap: 28px;
+}
+
+/* ESCONDE TODOS */
+.header.compact .nav-links a {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+
+  width: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* 🔥 MOSTRA SÓ O ATIVO */
+.header.compact .nav-links a.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+
+  width: auto;
+  margin-left: 0;
+}
+
+.header.compact nav {
+  gap: 10px;
+}
+
+.header.open .nav-links {
+  justify-content: flex-start;
+}
+
+/* quando abre → volta tudo */
+.header.open .nav-links a {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+
+  width: auto;
+}
+
+/* botão aparece */
+.header.compact .menu-toggle {
+  display: block;
+}
+
+/* 🔥 quando abre → tudo volta */
+.header.open .nav-links a {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
 nav a {
-  margin-left: 20px;
   text-decoration: none;
   color: #fff;
   position: relative;
@@ -65,18 +153,16 @@ nav a:hover {
   color: var(--laranja);
 }
 
-/* ATIVO */
 nav a.active {
+  display: inline-flex;
+  align-items: center;
   color: var(--laranja);
+  gap: 6px;
 }
 
-/* BOLINHA */
 nav a.active::after {
   content: "";
-  position: absolute;
-  right: -10px;
-  top: 50%;
-  transform: translateY(-50%);
+  margin-left: 6px;
 
   width: 6px;
   height: 6px;
@@ -130,6 +216,8 @@ nav a.active::after {
   text-transform: uppercase;
 
   text-shadow: 0 0 20px rgba(0,0,0,0.8);
+
+  transition: transform 0.4s ease, text-shadow 0.4s ease; 
 }
 
 /* SUBTÍTULO */
@@ -173,10 +261,56 @@ text-rendering: optimizeLegibility;
   clip-path: inset(0 calc(100% - var(--clip, 0%)) 0 0);
 }
 
+.hero-content h1::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+
+  /* 🔥 cor da animação */
+  color: transparent;
+
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 45%,
+    rgba(255,122,0,0.9) 50%,
+    transparent 55%,
+    transparent 100%
+  );
+
+  background-size: 200% 100%;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* 🔥 ESSENCIAL: mantém só o brilho visível */
+  -webkit-text-fill-color: transparent;
+
+  opacity: 0;
+  pointer-events: none;
+
+  animation: shineMove 3s linear infinite;
+  transition: opacity 0.3s ease;
+
+  /* 🔥 isso aqui resolve o "cinza feio" */
+  mix-blend-mode: screen;
+}
+@keyframes shineMove {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+.hero-content h1:hover::before {
+  opacity: 1;
+}
+
 /* AO PASSAR O MOUSE */
-.hero-content h1:hover,
-.hero-content p:hover {
+.hero-content h1:hover{
   background-position: 100%;
+  transform: scale(1.05);
 }
 /* BOTÕES */
 .buttons a {
@@ -219,4 +353,46 @@ text-rendering: optimizeLegibility;
   text-align: center;
   background: #000;
   border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+section {
+  position: relative;
+  z-index: 1;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+
+  width: 100%;
+  height: 120px;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.8) 100%
+  );
+
+  pointer-events: none;
+  z-index: 2;
+}
+
+.projetos::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+
+  width: 100%;
+  height: 120px;
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.8) 100%
+  );
+
+  pointer-events: none;
+  z-index: 2;
 }
