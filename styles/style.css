@@ -1,3 +1,7 @@
+/*========== 
+RESET & BASE 
+===========*/
+
 /* RESET */
 * {
   margin: 0;
@@ -16,6 +20,9 @@ body {
   --laranja: #ff7a00;
 }
 
+/*========== 
+    HEADER
+===========*/
 /* HEADER */
 .header {
   position: fixed;
@@ -56,7 +63,9 @@ nav {
   display: flex;
   align-items: center;
 }
-
+/*========== 
+NAV MENU
+===========*/
 /* container dos links */
 .nav-links {
   display: flex;
@@ -80,36 +89,30 @@ nav {
 /* links base */
 .nav-links a {
   gap: 1px;
-  transition: all 0.3s ease;
+
+  transition: 
+    transform 0.4s ease,
+    opacity 0.3s ease;
+
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0); /* 🔥 base agora é lateral */
 }
+
+.header.open .nav-links a:nth-child(1) { transition-delay: 0.05s; }
+.header.open .nav-links a:nth-child(2) { transition-delay: 0.1s; }
+.header.open .nav-links a:nth-child(3) { transition-delay: 0.15s; }
+.header.open .nav-links a:nth-child(4) { transition-delay: 0.2s; }
 
 /* 🔥 estado compacto */
 .header.compact .nav-links {
-  justify-content: flex-end;
-  gap: 28px;
+  gap: 0;
 }
 
 /* ESCONDE TODOS */
 .header.compact .nav-links a {
   opacity: 0;
-  transform: translateY(-10px);
+  transform: translateX(40px); /* 👉 vem da direita */
   pointer-events: none;
-
-  width: 0;
-  margin: 0;
-  overflow: hidden;
-}
-
-/* 🔥 MOSTRA SÓ O ATIVO */
-.header.compact .nav-links a.active {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-
-  width: auto;
-  margin-left: 0;
 }
 
 .header.compact nav {
@@ -117,18 +120,8 @@ nav {
 }
 
 .header.open .nav-links {
-  justify-content: flex-start;
+  gap: 28px;
 }
-
-/* quando abre → volta tudo */
-.header.open .nav-links a {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-
-  width: auto;
-}
-
 /* botão aparece */
 .header.compact .menu-toggle {
   display: block;
@@ -170,7 +163,9 @@ nav a.active::after {
   border-radius: 50%;
 }
 
-/* HERO */
+/*========== 
+HERO
+===========*/
 /* HERO */
 .hero {
   height: 100vh;
@@ -312,6 +307,11 @@ text-rendering: optimizeLegibility;
   background-position: 100%;
   transform: scale(1.05);
 }
+
+/*========== 
+BUTTONS
+===========*/
+
 /* BOTÕES */
 .buttons a {
   display: inline-block;
@@ -337,6 +337,10 @@ text-rendering: optimizeLegibility;
   transform: translateY(-3px) scale(1.05);
 }
 
+/*========== 
+SECTIONS
+===========*/
+
 /* SECTIONS */
 .section {
   height: 100vh;
@@ -347,11 +351,17 @@ text-rendering: optimizeLegibility;
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
+
+/*========== 
+FOOTER
+===========*/
+
 /* FOOTER */
 .footer {
+  position: relative;
+  z-index: 2;
   padding: 40px;
   text-align: center;
-  background: #000;
   border-top: 1px solid rgba(255,255,255,0.1);
 }
 
@@ -359,6 +369,11 @@ section {
   position: relative;
   z-index: 1;
 }
+
+/*========== 
+TRANSITIONS
+===========*/
+
 .hero::after {
   content: "";
   position: absolute;

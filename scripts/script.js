@@ -23,18 +23,24 @@ window.addEventListener("scroll", () => {
     header.classList.remove("scrolled");
   }
 
-  // seção ativa
   let current = "";
 
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 120;
-    const sectionHeight = section.clientHeight;
+  // HOME
+  if (window.scrollY < 100) {
+    current = "home";
+  }
 
-    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+  // DETECÇÃO NORMAL
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+
+    if (rect.top <= 150 && rect.bottom >= 150) {
       current = section.getAttribute("id");
     }
   });
 
+
+  // ativa menu
   navLinks.forEach(link => {
     link.classList.remove("active");
 
@@ -43,16 +49,15 @@ window.addEventListener("scroll", () => {
     }
   });
 
-  // 🔥 comportamento inteligente do menu
-if (current === "home") {
-  header.classList.remove("compact");
-  header.classList.remove("open");
-} else {
-  // 🔥 só aplica compact se NÃO estiver aberto
-  if (!header.classList.contains("open")) {
-    header.classList.add("compact");
+  // comportamento do header
+  if (current === "home") {
+    header.classList.remove("compact");
+    header.classList.remove("open");
+  } else {
+    if (!header.classList.contains("open")) {
+      header.classList.add("compact");
+    }
   }
-}
 });
 
 const texts = document.querySelectorAll(".hero-content h1, .hero-content p");
