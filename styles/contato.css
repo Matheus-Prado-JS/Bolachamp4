@@ -1,0 +1,228 @@
+/*===== CONTATO POPUP =====*/
+
+.contato-popup {
+  position: fixed;
+  top: 95px;
+  right: 24%;
+
+    background: rgba(255, 255, 255, 0.034);
+  backdrop-filter: blur(10px);
+
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.034);
+
+  padding: 15px 15px;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.5),
+    0 0 20px rgba(255,122,0,0.1);
+
+  z-index: 999;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+
+  transition: all 0.3s ease;
+}
+
+/* ativo */
+.contato-popup.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.contato-popup p {
+  margin: 8px 0;
+  color: #fff;
+  font-size: 14px;
+}
+
+.contato-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contato-item img {
+  width: 18px;
+  height: 18px;
+
+  /* 🔥 transforma preto em branco/azul */
+  filter: brightness(0) invert(1);
+
+  transition: 0.3s ease;
+}
+
+/* hover bonito */
+.contato-item:hover img {
+  filter: brightness(0) invert(1) sepia(1) hue-rotate(180deg);
+}
+
+.contato-item:hover {
+  color: #9fd3ff;
+}
+
+/* CONTATO HERO */
+.hero-contato {
+  margin-top: 25px;
+
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* cada item */
+.contato-item {
+    cursor: pointer;
+    position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 18px;
+
+  border: 1.5px solid var(--laranja);
+  border-radius: 30px;
+
+  text-decoration: none;
+  color: var(--laranja);
+  font-size: 14px;
+  font-weight: 500;
+
+  backdrop-filter: blur(6px);
+
+  transition: all 0.3s ease;
+}
+/* efeito ao clicar */
+.contato-item.copiado {
+  color: #421902 !important;
+}
+
+/* micro interação */
+.contato-item:active {
+  transform: scale(0.95);
+}
+/* ícone */
+.contato-item img {
+  width: 18px;
+  height: 18px;
+
+  filter: brightness(0) saturate(100%) invert(58%) sepia(92%) saturate(623%) hue-rotate(2deg) brightness(102%) contrast(101%);
+}
+
+/* 🔥 hover */
+.contato-item:hover {
+  background: var(--laranja);
+  color: #000;
+
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* ícone no hover */
+.contato-item:hover img {
+  filter: brightness(0);
+}
+
+.hero-contato {
+  margin-top: 25px;
+
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+
+  transition: all 0.4s ease;
+}
+
+/* quando ativo */
+.hero-contato.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* container central */
+.footer-contato {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+
+  margin-top: 10px;
+}
+
+/* item */
+.footer-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #ccc;
+  font-size: 14px;
+
+  cursor: pointer;
+
+  position: relative;
+
+  transition: all 0.3s ease;
+}
+
+/* ícone */
+.footer-item img {
+  width: 18px;
+  height: 18px;
+
+  filter: brightness(0) invert(1);
+  opacity: 0.7;
+
+  transition: 0.3s ease;
+  color: var(--laranja);
+}
+
+/* linha separadora automática */
+.footer-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 1px;
+  height: 20px;
+
+  background: rgba(255,255,255,0.1);
+}
+
+/* hover suave */
+.footer-item:hover {
+  color: var(--laranja);
+  transform: translateY(-2px);
+}
+
+/* glow leve */
+.footer-item:hover img {
+  opacity: 1;
+
+  filter: 
+    brightness(0)
+    saturate(100%)
+    invert(58%)
+    sepia(92%)
+    saturate(623%)
+    hue-rotate(2deg)
+    brightness(102%)
+    contrast(101%)
+    drop-shadow(0 0 6px rgba(255,122,0,0.5));
+}
+
+/* efeito copiar */
+.footer-item.copiado {
+  color: var(--laranja) !important;
+}

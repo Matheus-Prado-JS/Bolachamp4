@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/contato.css">
   <link rel="stylesheet" href="styles/projetos.css">
   <link rel="stylesheet" href="styles/video-modal.css">
   <link rel="stylesheet" href="styles/feedbacks.css">
@@ -28,12 +29,23 @@
         <a href="#home">Home</a>
         <a href="#projetos">Projetos</a>
         <a href="#feedbacks">Feedbacks</a>
-        <a href="">Contato</a>
+        <a href="#" class="contato-btn">Contato</a>
       </div>
 
       <div class="menu-toggle">☰</div>
     </nav>
   </header>
+<div class="contato-popup">
+  <p class="contato-item">
+    <img src="assets/Whatsapp.svg" alt="WhatsApp">
+    (11) 99999-9999
+  </p>
+
+  <p class="contato-item">
+    <img src="assets/Mail.svg" alt="Email">
+    contato@bolachamp4.com
+  </p>
+</div>
 
   <!-- HOME / HERO -->
   <section id="home" class="hero">
@@ -44,8 +56,19 @@
       <div class="buttons">
         <a href="#projetos">Projetos</a>
         <a href="#feedbacks">Feedbacks</a>
-        <a href="#contato">Contato</a>
+        <a href="#" class="hero-contato-btn">Contato</a>
       </div>
+      <div class="hero-contato">
+<div class="contato-item">
+  <img src="assets/whatsapp.svg">
+  <span>(11) 99999-9999</span>
+</div>
+
+<div class="contato-item">
+  <img src="assets/Mail.svg">
+  <span>contato@bolachamp4.com</span>
+</div>
+</div>
     </div>
   </section>
 <section id="projetos" class="projetos">
@@ -228,13 +251,23 @@ Acredito que vídeo bom é aquele que comunica, conecta e gera ação.
 </section>
   </div>
   <!-- FOOTER -->
-  <footer id="contato" class="footer">
-    <p>📞 (11) 99999-9999</p>
-    <p>📧 contato@bolachamp4.com</p>
-  </footer>
+<footer id="contato" class="footer">
+  <div class="footer-contato">
 
+    <div class="footer-item">
+      <img src="assets/whatsapp.svg">
+      <span>(11) 99999-9999</span>
+    </div>
 
+    <div class="footer-item">
+      <img src="assets/Mail.svg">
+      <span>contato@bolachamp4.com</span>
+    </div>
+
+  </div>
+</footer>
   <script src="scripts/script.js"></script>
+  <script src="scripts/contato.js" defer></script>
   <script src="scripts/projetos.js" defer></script>
   <script src="scripts/video-modal.js" defer></script>
   <script src="scripts/feedbacks.js" defer></script>
